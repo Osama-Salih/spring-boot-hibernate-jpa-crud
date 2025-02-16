@@ -6,6 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import java.util.List;
+
 
 @SpringBootApplication
 public class CurddemoApplication {
@@ -19,30 +21,42 @@ public class CurddemoApplication {
 		return runner -> {
 //			createStudent(studentDao);
 //			createMultipleStudents(studentDao);
-			readStudent(studentDao);
+//			readStudent(studentDao);
+			queryForStudents(studentDao);
 		};
 	}
 
-	private void readStudent(StudentDao studentDao) {
+	private void queryForStudents(StudentDao studentDao) {
+		// get list of students
+		List<Student> theStudents = studentDao.findAll();
 
-		// create a student object
-		System.out.println("Creating new student object...");
-		Student tempStudent = new Student("Daffy", "Duck", "daffy@luv2code.com");
-
-		// save the student object
-		System.out.println("Saving the student...");
-		studentDao.save(tempStudent);
-
-		// display id of the saved student
-		System.out.println("Saved student. Generated id: " + tempStudent.getId());
-
-		// retrieve student based on the id: primary key
-		System.out.println("\n Retrieving student with id: " + tempStudent.getId());
-
-		Student myStudent = studentDao.findById(tempStudent.getId());
-
-		System.out.println("Found the student: " + myStudent);
+		// display list of students
+		for (Student tempStudent : theStudents) {
+			System.out.println(tempStudent);
+		}
 	}
+
+
+//	private void readStudent(StudentDao studentDao) {
+//
+//		// create a student object
+//		System.out.println("Creating new student object...");
+//		Student tempStudent = new Student("Daffy", "Duck", "daffy@luv2code.com");
+//
+//		// save the student object
+//		System.out.println("Saving the student...");
+//		studentDao.save(tempStudent);
+//
+//		// display id of the saved student
+//		System.out.println("Saved student. Generated id: " + tempStudent.getId());
+//
+//		// retrieve student based on the id: primary key
+//		System.out.println("\n Retrieving student with id: " + tempStudent.getId());
+//
+//		Student myStudent = studentDao.findById(tempStudent.getId());
+//
+//		System.out.println("Found the student: " + myStudent);
+//	}
 
 //	private void createMultipleStudents(StudentDao studentDao) {
 //		// Create the student object
