@@ -18,38 +18,60 @@ public class CurddemoApplication {
 	public CommandLineRunner commandLineRunner(StudentDao studentDao) {
 		return runner -> {
 //			createStudent(studentDao);
-			createMultipleStudents(studentDao);
+//			createMultipleStudents(studentDao);
+			readStudent(studentDao);
 		};
 	}
 
-	private void createMultipleStudents(StudentDao studentDao) {
-		// Create the student object
-		System.out.println("Creating new student object ...");
-		Student tempStudent = new Student("Paul", "Doe", "paul@luv2code.com");
-		Student tempStudent1 = new Student("John", "Doe", "john@luv2code.com");
-		Student tempStudent2 = new Student("Mary", "Public", "mary@luv2code.com");
-		Student tempStudent3 = new Student("Bonita", "Applebum", "bonita@luv2code.com");
+	private void readStudent(StudentDao studentDao) {
 
-		// sava the student object
-		System.out.println("Saving the student ...");
+		// create a student object
+		System.out.println("Creating new student object...");
+		Student tempStudent = new Student("Daffy", "Duck", "daffy@luv2code.com");
+
+		// save the student object
+		System.out.println("Saving the student...");
 		studentDao.save(tempStudent);
-		studentDao.save(tempStudent1);
-		studentDao.save(tempStudent2);
-		studentDao.save(tempStudent3);
+
+		// display id of the saved student
+		System.out.println("Saved student. Generated id: " + tempStudent.getId());
+
+		// retrieve student based on the id: primary key
+		System.out.println("\n Retrieving student with id: " + tempStudent.getId());
+
+		Student myStudent = studentDao.findById(tempStudent.getId());
+
+		System.out.println("Found the student: " + myStudent);
 	}
 
-	private void createStudent(StudentDao studentDao) {
-
-		// Create the student object
-		System.out.println("Creating new student object ...");
-		Student tempStudent = new Student("Paul", "Doe", "paul@luv2code.com");
-
-		// sava the student object
-		System.out.println("Saving the student ...");
-		studentDao.save(tempStudent);
+//	private void createMultipleStudents(StudentDao studentDao) {
+//		// Create the student object
+//		System.out.println("Creating new student object ...");
+//		Student tempStudent = new Student("Paul", "Doe", "paul@luv2code.com");
+//		Student tempStudent1 = new Student("John", "Doe", "john@luv2code.com");
+//		Student tempStudent2 = new Student("Mary", "Public", "mary@luv2code.com");
+//		Student tempStudent3 = new Student("Bonita", "Applebum", "bonita@luv2code.com");
+//
+//		// sava the student object
+//		System.out.println("Saving the student ...");
+//		studentDao.save(tempStudent);
+//		studentDao.save(tempStudent1);
+//		studentDao.save(tempStudent2);
+//		studentDao.save(tempStudent3);
+//	}
+//
+//	private void createStudent(StudentDao studentDao) {
+//
+//		// Create the student object
+//		System.out.println("Creating new student object ...");
+//		Student tempStudent = new Student("Paul", "Doe", "paul@luv2code.com");
+//
+//		// sava the student object
+//		System.out.println("Saving the student ...");
+//		studentDao.save(tempStudent);
 
 		// display the id of the saved object
-		System.out.println("Saved student. Generated id: " + tempStudent.getId());
-	}
+//		System.out.println("Saved student. Generated id: " + tempStudent.getId());
+//	}
 
 }
