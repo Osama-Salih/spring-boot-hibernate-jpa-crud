@@ -23,10 +23,18 @@ public class Student {
 
     public Student() {}
 
-    public Student(String email, String lastName, String firstName) {
+    public Student(String firstName, String lastName, String email) {
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
