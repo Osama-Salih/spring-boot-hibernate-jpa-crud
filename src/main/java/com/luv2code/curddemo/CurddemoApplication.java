@@ -24,24 +24,38 @@ public class CurddemoApplication {
 //			readStudent(studentDao);
 //			queryForStudents(studentDao);
 //			queryForStudentByLastName(studentDao);
-			updateStudent(studentDao);
-		};
+//			updateStudent(studentDao);
+//			deleteStudent(studentDao);
+			deleteAllStudents(studentDao);
+	};
+}
+
+	private void deleteAllStudents(StudentDao studentDao) {
+		System.out.println("Deleting all students");
+		int numbersOfRows = studentDao.deleteAll();
+		System.out.println("Numbers of rows count: " + numbersOfRows);
 	}
 
-	private void updateStudent(StudentDao studentDao) {
-		// retrieve student based on the id: primary key
-		int studentId = 1;
-		System.out.println("Getting student with id: " + studentId);
-		Student myStudent = studentDao.findById(studentId);
-
-		// change first name to "Scooby"
-		myStudent.setFirstName("Scooby");
-		System.out.println("Update student...");
-
-		studentDao.update(myStudent);
-		// display updated student
-		System.out.println("Updated student: " + myStudent);
+	private void deleteStudent(StudentDao studentDao) {
+		int studentId = 3;
+		System.out.println("Deleting student id: " + studentId);
+		studentDao.delete(studentId);
 	}
+
+//	private void updateStudent(StudentDao studentDao) {
+//		// retrieve student based on the id: primary key
+//		int studentId = 1;
+//		System.out.println("Getting student with id: " + studentId);
+//		Student myStudent = studentDao.findById(studentId);
+//
+//		// change first name to "Scooby"
+//		myStudent.setFirstName("Scooby");
+//		System.out.println("Update student...");
+//
+//		studentDao.update(myStudent);
+//		// display updated student
+//		System.out.println("Updated student: " + myStudent);
+//	}
 
 //	private void queryForStudentByLastName(StudentDao studentDao) {
 //		// get list of students
