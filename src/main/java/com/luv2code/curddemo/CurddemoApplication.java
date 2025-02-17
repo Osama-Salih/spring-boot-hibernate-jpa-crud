@@ -23,18 +23,34 @@ public class CurddemoApplication {
 //			createMultipleStudents(studentDao);
 //			readStudent(studentDao);
 //			queryForStudents(studentDao);
-			queryForStudentByLastName(studentDao);
+//			queryForStudentByLastName(studentDao);
+			updateStudent(studentDao);
 		};
 	}
 
-	private void queryForStudentByLastName(StudentDao studentDao) {
-		// get list of students
-			List<Student> theStudents = studentDao.findByLastName("Doe");
-		// display list of students
-		for (Student tempStudent : theStudents) {
-			System.out.println(tempStudent);
-		}
+	private void updateStudent(StudentDao studentDao) {
+		// retrieve student based on the id: primary key
+		int studentId = 1;
+		System.out.println("Getting student with id: " + studentId);
+		Student myStudent = studentDao.findById(studentId);
+
+		// change first name to "Scooby"
+		myStudent.setFirstName("Scooby");
+		System.out.println("Update student...");
+
+		studentDao.update(myStudent);
+		// display updated student
+		System.out.println("Updated student: " + myStudent);
 	}
+
+//	private void queryForStudentByLastName(StudentDao studentDao) {
+//		// get list of students
+//			List<Student> theStudents = studentDao.findByLastName("Doe");
+//		// display list of students
+//		for (Student tempStudent : theStudents) {
+//			System.out.println(tempStudent);
+//		}
+//	}
 
 
 //	private void queryForStudents(StudentDao studentDao) {
