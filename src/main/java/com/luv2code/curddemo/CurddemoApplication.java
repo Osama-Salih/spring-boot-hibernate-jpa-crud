@@ -22,19 +22,30 @@ public class CurddemoApplication {
 //			createStudent(studentDao);
 //			createMultipleStudents(studentDao);
 //			readStudent(studentDao);
-			queryForStudents(studentDao);
+//			queryForStudents(studentDao);
+			queryForStudentByLastName(studentDao);
 		};
 	}
 
-	private void queryForStudents(StudentDao studentDao) {
+	private void queryForStudentByLastName(StudentDao studentDao) {
 		// get list of students
-		List<Student> theStudents = studentDao.findAll();
-
+			List<Student> theStudents = studentDao.findByLastName("Doe");
 		// display list of students
 		for (Student tempStudent : theStudents) {
 			System.out.println(tempStudent);
 		}
 	}
+
+
+//	private void queryForStudents(StudentDao studentDao) {
+//		// get list of students
+//		List<Student> theStudents = studentDao.findAll();
+//
+//		// display list of students
+//		for (Student tempStudent : theStudents) {
+//			System.out.println(tempStudent);
+//		}
+//	}
 
 
 //	private void readStudent(StudentDao studentDao) {
