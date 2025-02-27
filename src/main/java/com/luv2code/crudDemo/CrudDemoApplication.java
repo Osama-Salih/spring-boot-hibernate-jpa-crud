@@ -22,16 +22,24 @@ public class CrudDemoApplication {
 		return runner -> {
 //			createStudent(studentDAO);
 //			findStudentById(studentDAO);
-			getStudents(studentDAO);
+//			getStudents(studentDAO);
+			getStudentsByLastName(studentDAO);
 		};
 	}
 
-	private void getStudents(StudentDAO studentDAO) {
-		List<Student> students = studentDAO.findStudents();
-		for (Student s: students) {
+	private void getStudentsByLastName(StudentDAO studentDAO) {
+		List<Student> students = studentDAO.findStudentsByLastName("Duck");
+		for (Student s: students){
 			System.out.println(s);
 		}
 	}
+
+//	private void getStudents(StudentDAO studentDAO) {
+//		List<Student> students = studentDAO.findStudents();
+//		for (Student s: students) {
+//			System.out.println(s);
+//		}
+//	}
 
 
 //	private void findStudentById(StudentDAO studentDAO) {
