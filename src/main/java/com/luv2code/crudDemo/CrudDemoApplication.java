@@ -18,18 +18,33 @@ public class CrudDemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			createStudent(studentDAO);
+//			createStudent(studentDAO);
+			findStudentById(studentDAO);
 		};
 	}
 
-	private void createStudent(StudentDAO studentDAO) {
-
-		System.out.println("Create student");
-		Student student = new Student("Puel", "doe", "puel@gmail.com");
+	private void findStudentById(StudentDAO studentDAO) {
+		System.out.println("Creating student");
+		Student student = new Student("Daffy", "Duck", "daffy@luv2code.com");
 
 		System.out.println("Saving the student");
 		studentDAO.save(student);
 
-		System.out.println("Generated student with id: " + student.getId());
+		System.out.println("Display the id for the saved student: " + student.getId());
+
+		System.out.println("Get the student by id");
+		Student savedStudent = studentDAO.findById(student.getId());
+		System.out.println("student data: " + savedStudent);
 	}
+
+//	private void createStudent(StudentDAO studentDAO) {
+//
+//		System.out.println("Create student");
+//		Student student = new Student("Puel", "doe", "puel@gmail.com");
+//
+//		System.out.println("Saving the student");
+//		studentDAO.save(student);
+//
+//		System.out.println("Generated student with id: " + student.getId());
+//	}
 }
