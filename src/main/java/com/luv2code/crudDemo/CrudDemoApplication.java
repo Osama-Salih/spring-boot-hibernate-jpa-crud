@@ -24,22 +24,37 @@ public class CrudDemoApplication {
 //			findStudentById(studentDAO);
 //			getStudents(studentDAO);
 //			getStudentsByLastName(studentDAO);
-			updateStudent(studentDAO);
+//			updateStudent(studentDAO);
+//			deleteStudent(studentDAO);
+			deleteAllStudents(studentDAO);
 		};
 	}
 
-	private void updateStudent(StudentDAO studentDAO) {
-		int studentId = 1;
-		System.out.println("Getting student with id: " + studentId);
-
-		Student student = studentDAO.findById(studentId);
-
-		System.out.println("Update student...");
-		student.setFirstName("John");
-
-		studentDAO.update(student);
-		System.out.println("Updated student: " + student);
+	private void deleteAllStudents(StudentDAO studentDAO) {
+		System.out.println("Deleting all students");
+		int numRowsDeleted = studentDAO.deleteAll();
+		System.out.println("Numbers of rows deleted: " + numRowsDeleted);
 	}
+
+
+//	private void deleteStudent(StudentDAO studentDAO) {
+//		int studentId = 3;
+//		System.out.println("Deleting student with id: " + studentId);
+//		studentDAO.delete(studentId);
+//	}
+
+//	private void updateStudent(StudentDAO studentDAO) {
+//		int studentId = 1;
+//		System.out.println("Getting student with id: " + studentId);
+//
+//		Student student = studentDAO.findById(studentId);
+//
+//		System.out.println("Update student...");
+//		student.setFirstName("John");
+//
+//		studentDAO.update(student);
+//		System.out.println("Updated student: " + student);
+//	}
 
 //	private void getStudentsByLastName(StudentDAO studentDAO) {
 //		List<Student> students = studentDAO.findStudentsByLastName("Duck");
