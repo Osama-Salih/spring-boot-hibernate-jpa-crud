@@ -26,15 +26,28 @@ public class CrudDemoApplication {
 //			getStudentsByLastName(studentDAO);
 //			updateStudent(studentDAO);
 //			deleteStudent(studentDAO);
-			deleteAllStudents(studentDAO);
+//			deleteAllStudents(studentDAO);
+			createMultipleStudents(studentDAO);
 		};
 	}
 
-	private void deleteAllStudents(StudentDAO studentDAO) {
-		System.out.println("Deleting all students");
-		int numRowsDeleted = studentDAO.deleteAll();
-		System.out.println("Numbers of rows deleted: " + numRowsDeleted);
+	private void createMultipleStudents(StudentDAO studentDAO) {
+
+		System.out.println("Create multiple students");
+		Student s1 = new Student("John", "Doe", "john@luv2code.com");
+		Student s2 = new Student("Mary", "Public", "mary@luv2code.com");
+		Student s3 = new Student("bonita", "Applebum", "bonita@luv2code.com");
+
+		studentDAO.save(s1);
+		studentDAO.save(s2);
+		studentDAO.save(s3);
 	}
+
+//	private void deleteAllStudents(StudentDAO studentDAO) {
+//		System.out.println("Deleting all students");
+//		int numRowsDeleted = studentDAO.deleteAll();
+//		System.out.println("Numbers of rows deleted: " + numRowsDeleted);
+//	}
 
 
 //	private void deleteStudent(StudentDAO studentDAO) {
